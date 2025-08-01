@@ -23,10 +23,12 @@ if not GEMINI_API_KEY:
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
+voice_model = genai.GenerativeModel('gemini-2.5-pro-preview-tts')
 
 # Pydantic models
 class ScoldingRequest(BaseModel):
     scenario: str
+    character: str 
     
 class ScoldingResponse(BaseModel):
     malayalam_scolding: str
@@ -44,6 +46,14 @@ Translation: [english translation]
 Drama Rating: [1-5] 🌶️
 
 Keep it authentic, emotional, and concise (1-2 sentences max)."""
+DAD_PROMPT = """You are an Indian dad from Kerala. Generate a short Malayalam roasting logical line based on the scenario.
+
+Format your response as:
+Malayalam: [malayalam text]
+Translation: [english translation]
+Drama Rating: [1-5] 🌶️
+
+Be sarcastic, stern, and to the point. 1-2 sentences max."""
 
 # Add CORS middleware
 app.add_middleware(
@@ -68,19 +78,30 @@ async def generate_scolding(request: ScoldingRequest):
         raise HTTPException(status_code=500, detail="Gemini API key not configured")
     
     scenario = request.scenario.strip()
+    character = request.character.strip().lower()
+
     if not scenario:
         raise HTTPException(status_code=400, detail="Scenario cannot be empty")
-    
+
     if len(scenario) > 500:
         raise HTTPException(status_code=400, detail="Scenario too long (max 500 characters)")
-    
+
+    if character == "mom":
+        system_prompt = SYSTEM_PROMPT
+    elif character == "dad":
+        system_prompt = DAD_PROMPT
+    else:
+        raise HTTPException(status_code=400, detail="Character must be either 'mom' or 'dad'")
+
     try:
-        full_prompt = f"{SYSTEM_PROMPT}\n\nScenario: {scenario}"
+        full_prompt = f"{system_prompt}\n\nScenario: {scenario}"
         response = model.generate_content(full_prompt)
         
         if not response.text:
             raise HTTPException(status_code=500, detail="Failed to generate response")
-        
+
+        # parsing logic continues here (same as before)...
+
         # Parse response
         response_text = response.text.strip()
         malayalam_line = ""
@@ -127,7 +148,56 @@ async def generate_scolding(request: ScoldingRequest):
     except Exception as e:
         logger.error(f"Error generating scolding: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Failed to generate scolding: {str(e)}")
+import requests
+import base64
+import wave
+import io
 
+def generate_and_save_audio( text, output_wav_path='output.wav', voice_name='Kore'):
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent"
+
+    headers = {
+        "x-goog-api-key": GEMINI_API_KEY,
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "contents": [{
+            "parts": [{"text": text}]
+        }],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {
+                "voiceConfig": {
+                    "prebuiltVoiceConfig": {
+                        "voiceName": voice_name
+                    }
+                }
+            }
+        },
+        "model": "gemini-2.5-flash-preview-tts"
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    response.raise_for_status()
+
+    try:
+        audio_base64 = response.json()['candidates'][0]['content']['parts'][0]['inlineData']['data']
+    except (KeyError, IndexError):
+        raise ValueError("Invalid response structure or missing audio data")
+
+    pcm_data = base64.b64decode(audio_base64)
+
+    # Save to WAV using wave module (assumes PCM: s16le, 24kHz, mono)
+    with wave.open(output_wav_path, 'wb') as wav_file:
+        wav_file.setnchannels(1)       # mono
+        wav_file.setsampwidth(2)       # 16-bit PCM = 2 bytes
+        wav_file.setframerate(24000)   # 24kHz sample rate
+        wav_file.writeframes(pcm_data)
+
+    print(f"Audio saved to {output_wav_path}")
+
+generate_and_save_audio("കണക്കിൽ ഇത്രയും കുറഞ്ഞ മാർക്കോ? നിന്നെ ഞാൻ എന്ത് ചെയ്യാനാ!", voice_name='schedar')
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="localhost", port=8000)
