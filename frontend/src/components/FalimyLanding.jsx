@@ -3,6 +3,7 @@ import { Sun, Moon, Mic } from 'lucide-react';
 import MomSticker from '../assets/mom_sticker.png';
 import DadSticker from '../assets/dad_sticker.png';
 import './FamilyLanding.css';
+import Loading from './Loading';
 
 const FalimyLanding = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,6 +27,7 @@ const FalimyLanding = () => {
 
   return (
     <div className={`falimy-container ${themeClass}`}>
+      <Loading/>
       {/* Theme Toggle - Top Right */}
       <div className="theme-toggle">
         <button
