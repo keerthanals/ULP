@@ -66,7 +66,7 @@ const FalimyLanding = () => {
     },
     mainContent: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-around',
       minHeight: '100vh',
