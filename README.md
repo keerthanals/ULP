@@ -68,7 +68,7 @@ https://raw.githubusercontent.com/keerthanals/ULP/refs/heads/main/mom_interface.
 *This shows Mom interface*
 
 ![Screenshot2]
-(Add screenshot 2 here with proper name)
+[(Add screenshot 2 here with proper name)](https://raw.githubusercontent.com/keerthanals/ULP/refs/heads/main/dad_interface.jpg)
 *This shows Dad interface*
 
 ![Screenshot3]
