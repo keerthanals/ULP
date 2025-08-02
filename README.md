@@ -46,7 +46,7 @@ bash
 Copy
 Edit
 git clone https://github.com/keerthanals/ULP
-cd mom-vs-dad-roast  
+cd frontend 
 pip install -r requirements.txt  
 npm install  
 Run
