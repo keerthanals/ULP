@@ -53,7 +53,7 @@ Run
 bash
 Copy
 Edit
-# Start FastApiu
+# Start FastApi
 python app.py  
 # Start React frontend
 npm run dev
