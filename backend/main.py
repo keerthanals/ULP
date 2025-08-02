@@ -198,6 +198,6 @@ def generate_and_save_audio( text, output_wav_path='output.wav', voice_name='Kor
     print(f"Audio saved to {output_wav_path}")
 
 generate_and_save_audio("കണക്കിൽ ഇത്രയും കുറഞ്ഞ മാർക്കോ? നിന്നെ ഞാൻ എന്ത് ചെയ്യാനാ!", voice_name='schedar')
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="localhost", port=80)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="localhost", port=80)
