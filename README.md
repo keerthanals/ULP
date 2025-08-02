@@ -53,10 +53,10 @@ Run
 bash
 Copy
 Edit
-# Start Flask server
+# Start FastApiu
 python app.py  
 # Start React frontend
-npm start  
+npm run dev
 
 
 ### Project Documentation
