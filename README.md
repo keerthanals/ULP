@@ -1,7 +1,7 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# Dad vs Mom Roasts 🎯
 
 
 ## Basic Details
@@ -34,9 +34,9 @@ Languages: Python, JavaScript
 
 Frameworks: FastAPI (backend), React (frontend)
 
-Libraries: 
+Libraries: FastApi,React
 
-Tools: FFMPEG, Audacity (for audio editing), Git, VS Code
+Tools: google gemini 2.5 flash ,Git
 
 
 ### Implementation
@@ -46,15 +46,15 @@ bash
 Copy
 Edit
 git clone https://github.com/keerthanals/ULP
-cd mom-vs-dad-roast  
+cd frontend 
 pip install -r requirements.txt  
 npm install  
 Run
 bash
 Copy
 Edit
-# Start FastApiu
-python app.py  
+# Start FastApi
+[# Start the FastAPI server uvicorn main:app --reload]
 # Start React frontend
 npm run dev
 
@@ -63,14 +63,16 @@ npm run dev
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1]
+*This shows Mom interface*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2]
+(Add screenshot 2 here with proper name)
+*This shows Dad interface*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot3]
+(Add screenshot 3 here with proper name)
+*This shows Loading interface*
 
 # Diagrams
 [![Workflow](Add your workflow/architecture diagram here)](https://github.com/keerthanals/ULP/blob/main/md%20workflow.png)
