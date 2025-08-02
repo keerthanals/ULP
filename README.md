@@ -73,8 +73,8 @@ For Software:
 *Add caption explaining what this shows*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+[![Workflow](Add your workflow/architecture diagram here)](https://github.com/keerthanals/ULP/blob/main/md%20workflow.png)
+
 
 
 ### Project Demo
@@ -82,8 +82,7 @@ For Software:
 [Add your demo video link here]
 *Explain what the video demonstrates*
 
-# Additional Demos
-[Add any extra demo materials/links]
+
 
 ## Team Contributions
 - Keerthana L S: Frontend
