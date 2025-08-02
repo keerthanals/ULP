@@ -32,6 +32,7 @@ class ScoldingRequest(BaseModel):
     
 class ScoldingResponse(BaseModel):
     malayalam_scolding: str
+    audio: str
     english_translation: str
     drama_rating: int
     spice_level: str
@@ -136,9 +137,13 @@ async def generate_scolding(request: ScoldingRequest):
             translation = "Translation parsing failed"
         
         spice_level = "🌶️" * drama_rating
-        
+        voice = 'Kore' if character == 'mom' else 'schedar'
+        import random
+        uid = random.randint(1000, 9999)
+        audio = generate_and_save_audio(malayalam_line, voice_name=voice, output_wav_path=f'static/{uid}scolding.wav')
         return ScoldingResponse(
             malayalam_scolding=malayalam_line,
+            audio=audio,
             english_translation=translation,
             drama_rating=drama_rating,
             spice_level=spice_level,
@@ -196,8 +201,13 @@ def generate_and_save_audio( text, output_wav_path='output.wav', voice_name='Kor
         wav_file.writeframes(pcm_data)
 
     print(f"Audio saved to {output_wav_path}")
+    return output_wav_path
 
-generate_and_save_audio("കണക്കിൽ ഇത്രയും കുറഞ്ഞ മാർക്കോ? നിന്നെ ഞാൻ എന്ത് ചെയ്യാനാ!", voice_name='schedar')
+# static files serving
+from fastapi.staticfiles import StaticFiles
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# generate_and_save_audio("കണക്കിൽ ഇത്രയും കുറഞ്ഞ മാർക്കോ? നിന്നെ ഞാൻ എന്ത് ചെയ്യാനാ!", voice_name='schedar')
 # if __name__ == "__main__":
 #     import uvicorn
 #     uvicorn.run(app, host="localhost", port=80)
