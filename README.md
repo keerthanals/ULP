@@ -34,9 +34,9 @@ Languages: Python, JavaScript
 
 Frameworks: FastAPI (backend), React (frontend)
 
-Libraries: 
+Libraries: FastApi,React
 
-Tools: FFMPEG, Audacity (for audio editing), Git, VS Code
+Tools: google gemini 2.5 flash ,Git
 
 
 ### Implementation
@@ -54,7 +54,7 @@ bash
 Copy
 Edit
 # Start FastApi
-python app.py  
+[# Start the FastAPI server uvicorn main:app --reload]
 # Start React frontend
 npm run dev
 
