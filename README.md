@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/keerthanals/ULP/refs/heads/main/mom_interface.
 *This shows Dad interface*
 
 ![Screenshot3]
-(Add screenshot 3 here with proper name)
+[(Add screenshot 3 here with proper name)](https://raw.githubusercontent.com/keerthanals/ULP/refs/heads/main/loading_interface.jpg)
 *This shows Loading interface*
 
 # Diagrams
