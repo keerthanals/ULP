@@ -82,9 +82,7 @@ https://raw.githubusercontent.com/keerthanals/ULP/refs/heads/main/mom_interface.
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
+](https://github.com/keerthanals/ULP/blob/main/demo_video_roaster.mp4)
 
 
 ## Team Contributions
