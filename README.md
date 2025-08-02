@@ -63,14 +63,16 @@ npm run dev
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1]
+*This shows Mom interface*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2]
+(Add screenshot 2 here with proper name)
+*This shows Dad interface*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot3]
+(Add screenshot 3 here with proper name)
+*This shows Loading interface*
 
 # Diagrams
 [![Workflow](Add your workflow/architecture diagram here)](https://github.com/keerthanals/ULP/blob/main/md%20workflow.png)
